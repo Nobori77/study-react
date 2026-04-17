@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MemberList = () => {
  const [memberList, setMemberList] = useState([])
@@ -14,8 +15,8 @@ const MemberList = () => {
     getMemberList()
   }, [])
 
-  const memberNames = memberList.map(({memberName}, i) => 
-    <li key={i}>{memberName}</li>
+  const memberNames = memberList.map(({id, memberName}, i) => 
+    <li key={i}><Link to={`/members/member-info/${id}`}>{memberName}</Link></li>
   )
 
   return (
