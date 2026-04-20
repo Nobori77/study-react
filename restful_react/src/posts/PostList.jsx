@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useFetch from './_function/useFetch';
 
+// 게시글 전체 목록
 const PostList = () => {
-  const [postList, setPostList] = useState([])
 
-  useEffect(() => {
-    const getPostList = async () => {
-      const response = await fetch("http://localhost:10000/api/posts")
-      const postList = await response.json()
-      const {message, data} = postList
-      setPostList(data)
-    }
+    const [posts, setPosts] = useState([])
+    const {message, data} = useFetch("http://localhost:10000/api/posts")
 
-    getPostList()
-  }, [])
+    useEffect(() => {
+        if(data){
+            setPosts(data)
+        }
+    }, [data])
 
-  const postTitleNames = postList.map(({id, postTitle}, i) => 
-    <li key={i}><Link to={`/posts/post-read/${id}`}>{postTitle}</Link></li>
-  ) 
-  return (
-    <div>
-      게시판 목록
-      <ul>
-        {postTitleNames}
-      </ul>
-    </div>
-  );
+    const postList = posts?.map(({id, postTitle, memberName}, i) => (
+        <li key={i} style={{
+            border: "solid 1px black"
+        }}>
+            <Link to={`/posts/post-read/${id}`}>
+                <span>{id}. {postTitle}</span>
+            </Link>
+            <p>{memberName}</p>
+        </li>
+    ))
+
+    return (
+        <div>
+            <ul>{postList}</ul>
+        </div>
+    );
 };
 
 export default PostList;

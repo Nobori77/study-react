@@ -52,11 +52,12 @@ const PostRead = () => {
     <div>
       <p>게시글 번호: {post?.id}</p>
       <p>제목: {post?.postTitle}</p>
-      <p>내용: {post?.postContent}</p>/
+      <p>내용: {post?.postContent}</p>
       <p>조회수: {post?.postReadCount}</p>
       <p>작성자 이름: {post?.memberName}</p>
       <Link to={`/posts/post-update/${id}`}>게시글 수정</Link>
       <button onClick={removePost}>게시글 삭제</button>
+      <Link to={`/posts/post-list`}>게시글 목록</Link>
     </div>
   );
 };

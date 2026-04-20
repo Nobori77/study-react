@@ -5,6 +5,8 @@ import MemberJoin from '../members/MemberJoin';
 import MemberLogin from '../members/MemberLogin';
 import PostList from '../posts/PostList';
 import PostRead from '../posts/PostRead';
+import PostWrite from '../posts/PostWrite';
+import PostUpdate from '../posts/PostUpdate';
 
 const router = createBrowserRouter ([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter ([
   {
     path:"/posts/post-read/:id",
     element: <PostRead />
+  },
+  {
+    path:"/posts/post-write",
+    element: <PostWrite />
+  },
+    {
+    path:"/posts/post-update/:id",
+    element: <PostUpdate />
   }
 ])
 
