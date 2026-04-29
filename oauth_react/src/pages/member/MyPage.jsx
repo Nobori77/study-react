@@ -12,6 +12,7 @@ const MyPage = () => {
       })
 
       console.log("testFetch 실행")
+      
     
     }
   }, [])

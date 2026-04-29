@@ -96,6 +96,7 @@ const Login = () => {
                    <div>
                        <p>비밀번호</p>
                        <input 
+                            type='password'
                            {...register("memberPassword", {
                                required: true,
                                pattern: {
